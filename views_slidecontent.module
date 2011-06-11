@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Implementation of hook_views_api().
+ */
+function views_slidecontent_views_api() {
+  return array(
+    'api' => 2.0,
+    'path' => drupal_get_path('module', 'views_slidecontent') . '/views',
+  );
+}
+
+/**
+ * views_slide_content: Preprocess function for the slide content.
+ */
+function views_slidecontent_preprocess_views_slide_content(&$vars) {
+  
+}
+
+/**
+ * Define options settings form for views_slidecontent plugin.
+ */
+function views_slidecontent_options_form(&$form, &$form_state) {
+  $form['queue'] = array(
+    '#type' => 'select',
+    '#options' => array('under' => 'under', 'up' => 'up', 'left' => 'left', 'right' => 'right'),
+    '#title' => t('The queue order'),
+    '#description' => t(''),
+  );
+}

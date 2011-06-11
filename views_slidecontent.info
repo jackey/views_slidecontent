@@ -1,0 +1,8 @@
+;$file
+name=Views slide content
+description=Provide views style for high light content slide animation. 
+package=Views
+dependencies[] = views
+version=1.0
+core=6.x
+
