@@ -9,6 +9,7 @@ function views_slidecontent_views_plugins() {
           'title' => t('Slide content'),
           'help' => t('Provide high light slide content'),
           'handler' => 'views_slidecontent_plugin_style_slidecontent',
+          'path' => drupal_get_path('module', 'views_slidecontent') . '/views',
           'theme' => 'views_slidecontent',
           'uses options' => TRUE,
           'uses row plugin' => TRUE,

@@ -13,8 +13,10 @@ function views_slidecontent_views_api() {
 /**
  * views_slide_content: Preprocess function for the slide content.
  */
-function views_slidecontent_preprocess_views_slide_content(&$vars) {
-  
+function views_slidecontent_preprocess_views_slidecontent(&$vars) {
+  drupal_add_js(array('views_slidecontent' => array('items' => $vars['options']['items'], 'queue' => $vars['options']['queue'], 'speed' => $vars['options']['speed'])), 'setting');
+  drupal_add_js(drupal_get_path('module', 'views_slidecontent').'/js/jquery.vticker.1.4.js');
+  drupal_add_js(drupal_get_path('module', 'views_slidecontent').'/js/views_slidecontent.js');
 }
 
 /**
@@ -23,8 +25,20 @@ function views_slidecontent_preprocess_views_slide_content(&$vars) {
 function views_slidecontent_options_form(&$form, &$form_state) {
   $form['queue'] = array(
     '#type' => 'select',
-    '#options' => array('under' => 'under', 'up' => 'up', 'left' => 'left', 'right' => 'right'),
+    '#options' => array('under' => 'under', 'up' => 'up'),
     '#title' => t('The queue order'),
     '#description' => t(''),
+  );
+  
+  $form['speed'] = array(
+    '#type' => 'select',
+    '#options' => array('1000' => '1000', '2000' => '2000', '3000' => '3000'),
+    '#title' => t('The speed between switch'),
+  );
+  
+  $form['items'] = array(
+    '#type' => 'textfield',
+    '#title' => t(' how many items to show'),
+    '#description' => t('Default is 2'),
   );
 }
